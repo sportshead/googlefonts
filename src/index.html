@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Google Fonts Proxy</title>
+	</head>
+	<body>
+		<h1>Usage</h1>
+		Prefix <code>fonts.googleapis.com</code> with <code>%HOST%</code>. For
+		example:
+		<ul>
+			<li>
+				<code>https://fonts.googleapis.com/css2...</code> ->
+				<code>https://%HOST%/fonts.googleapis.com/css2...</code>
+			</li>
+		</ul>
+
+		<code>fonts.gstatic.com</code> is also proxied and automatically
+		prefixed by <code>%HOST%</code>:
+		<pre>
+GET https://fonts.googleapis.com/css2?family=Roboto
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
+}
+===
+GET https://%HOST%/fonts.googleapis.com/css2?family=Roboto
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://%HOST%/fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
+}
+	</pre
+		>
+	</body>
+</html>
