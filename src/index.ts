@@ -46,11 +46,11 @@ export default {
 		console.log(`Cache miss, fetching ${fetchURL}`);
 
 		response = await fetch(fetchURL);
-		const body = await response
+		const body = response.headers.get("Content-Type")?.startsWith("text/") ? await response
 			.text()
 			.then((text) =>
 				text.replaceAll(ALLOWED_DOMAINS_REGEXP, `${url.host}/$1`),
-			);
+			) : response.body;
 
 		response = new Response(body, response);
 		// force caching
